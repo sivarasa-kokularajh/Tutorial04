@@ -1,28 +1,19 @@
-object Q3{
+package tutorial
+import scala.io.StdIn
 
-    def main(args: Array[String]) = { 
-        println(formatNames("Benny")()(toUpper));
-        println(formatNames("Niroshan")(1)(toUpper));
-        println(formatNames("Saman")()(toLower));
-        println(formatNames("Kumara")(5)(toUpper));
-    }  
+object Q3 {
+  def main(args: Array[String]): Unit = {
+    print("Enter a number:")
+    val N = StdIn.readInt
+    println("Addition numbers from 1 to N:" + sum(1, N))
+  }
 
-    def toUpper(name:String):String = name.toUpperCase();
-    def toLower(name:String):String = name.toLowerCase();
-    
-    def formatNames(name:String)( list: Int*)(function: String => String): String = {
-        if (list.isEmpty){
-            return function(name);
-        }
- 
-        var temp = "";
-        var i=0;
-        while(i<name.length()){
-            if(list.contains(i)) temp = temp+ function(name.charAt(i).toString);
-            else temp=temp+name.charAt(i).toString;
-            i=i+1;
-        }
-        return temp;
- 
+  def sum(n: Int, a: Int): Int = {
+    if (a >= n) {
+      n + sum(n + 1, a);
     }
+    else {
+      return 0;
+    }
+  }
 }

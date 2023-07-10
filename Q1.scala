@@ -1,22 +1,24 @@
+package tutorial
+import scala.io.StdIn
+
 object Q1 {
-    def calInterest(depositAmount: Double): Double = {
-    
-      if (depositAmount <= 20000)
-        depositAmount * 0.02
-      else if (depositAmount <= 200000)
-        depositAmount * 0.04
-      else if (depositAmount <= 2000000)
-        depositAmount * 0.035
-      else
-        depositAmount * 0.065
+  def main(args: Array[String]): Unit = {
+    print("Enter  number:");
+    var value = StdIn.readInt();
+    println("input prime?" + prime(value));
+
   }
 
-    def main(args: Array[String]): Unit = {
-
-    println(calInterest(10000))
-    println(calInterest(100000))
-    println(calInterest(1000000))
-    println(calInterest(10000000))
+  def GCD(no1: Int, no2: Int): Int = no2 match {
+    case no2 if no2 == 0 => no1
+    case no2 if (no2 > no1) => GCD(no2, no1)
+    case _ => GCD(no2, no1 % no2)
   }
 
+  def prime(n: Int, a: Int = 2): Boolean = n match {
+    case n if (n == a) => true;
+    case n if (GCD(n, a) > 1) => false;
+    case _ => prime(n, a + 1);
+
+  }
 }
